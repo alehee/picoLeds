@@ -15,5 +15,5 @@ class Networking:
             print('Waiting for connection...')
             sleep(1)
         ip = wlan.ifconfig()[0]
-        print(f'Connected on {ip}')
+        print(f'Connected on {ip} with hostname {network.hostname()}')
         return ip
