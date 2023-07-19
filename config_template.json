@@ -1,4 +1,6 @@
 {
-  "networkSsid": "wifiName",
-  "networkPassword": "wifiPassword"
+  "network": {
+    "networkSsid": "wifiName",
+    "networkPassword": "wifiPassword"
+  }
 }

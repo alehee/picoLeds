@@ -2,4 +2,5 @@ from networking import Networking
 import json
 
 config = json.load(open('config.json'))
-network = Networking(config['networkSsid'], config['networkPassword'])
+networkConfig = config['network'];
+network = Networking(networkConfig['networkSsid'], networkConfig['networkPassword'])
