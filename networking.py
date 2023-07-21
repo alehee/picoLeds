@@ -6,6 +6,7 @@ class Networking:
     def __init__(self, ssid, password):
         self.ssid = ssid
         self.password = password
+        self.ip = None
 
     def connect(self):
         wlan = network.WLAN(network.STA_IF)
@@ -14,6 +15,6 @@ class Networking:
         while wlan.isconnected() == False:
             print('Waiting for connection...')
             sleep(1)
-        ip = wlan.ifconfig()[0]
+        self.ip = wlan.ifconfig()[0]
         print(f'Connected on {ip} with hostname {network.hostname()}')
-        return ip
+        return self.ip
