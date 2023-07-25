@@ -6,6 +6,7 @@ class Networking:
     def __init__(self, ssid, password):
         self.ssid = ssid
         self.password = password
+        network.hostname('PicoW')
 
     def connect(self):
         wlan = network.WLAN(network.STA_IF)
