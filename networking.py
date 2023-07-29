@@ -17,4 +17,6 @@ class Networking:
             sleep(1)
         self.ip = wlan.ifconfig()[0]
         print(f'Connected on {self.ip} with hostname {network.hostname()}')
-        return self.ip
+    
+    def updateIpAddress(self):
+        pass
