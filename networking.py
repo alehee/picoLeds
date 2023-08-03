@@ -19,4 +19,5 @@ class Networking:
         print(f'Connected on {self.ip} with hostname {network.hostname()}')
     
     def updateIpAddress(self):
+        call = f'name={network.hostname()}&ip={self.ip}'
         pass
