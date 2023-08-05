@@ -20,4 +20,5 @@ class Networking:
     
     def updateIpAddress(self):
         call = f'name={network.hostname()}&ip={self.ip}'
+        print(f'Call to endpoint `{call}`')
         pass
