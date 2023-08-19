@@ -1,6 +1,8 @@
 {
+  "id": "LEDZ",
   "network": {
     "networkSsid": "wifiName",
-    "networkPassword": "wifiPassword"
+    "networkPassword": "wifiPassword",
+    "endpointUrl": "http://someaddress.com/endpoint"
   }
 }

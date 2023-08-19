@@ -161,6 +161,7 @@ cython_debug/
 
 # vscode
 .vscode/
+.micropico
 
 # Config file
 config.json

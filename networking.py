@@ -1,5 +1,6 @@
 import network
 import socket
+import urequests as requests
 from time import sleep
 
 class Networking:
@@ -18,7 +19,9 @@ class Networking:
         self.ip = wlan.ifconfig()[0]
         print(f'Connected on {self.ip} with hostname {network.hostname()}')
     
-    def updateIpAddress(self):
-        call = f'name={network.hostname()}&ip={self.ip}'
+    def updateIpAddress(self, url, id):
+        call = f'{url}?id={id}&ip={self.ip}'
         print(f'Call to endpoint `{call}`')
-        pass
+        request = requests.get(call)
+        print(f'Request result: {request.content}')
+        
