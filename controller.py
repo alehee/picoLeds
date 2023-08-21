@@ -13,10 +13,13 @@ class Controller:
         for i in range(0, self.count):
             self.leds.append(Led('#C00000'))
 
-    def changeColor(self, color, brightness = None):
-        if brightness is not None:
-            self.brightness = brightness
-
+    def changeColor(self, color):
         # TODO
+        print(f'Changed color to {color}')
+        return 'OK'
 
-        print(f'Changed color to {color} with brightness {self.brightness}')
+    def changeBrightness(self, brightness):
+        self.brightness = brightness
+        # TODO
+        print(f'Changed brightness to {brightness}')
+        return 'OK'

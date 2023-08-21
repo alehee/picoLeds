@@ -1,6 +1,5 @@
 from networking import Networking
 from controller import Controller
-from endpoint import Endpoint
 import json
 
 config = json.load(open('config.json'))
@@ -25,14 +24,23 @@ while True:
         request = str(cl.recv(1024))
         print(request)
 
-        validation = Endpoint.validate(request)
-        print(validation)
+        endpoint = request.split()[1]
+        response = "No endpoint found"
+        
+        if endpoint.startswith('/color/'):
+            color = endpoint.removeprefix('/color/')
+            response = controller.changeColor(color)
 
-        if validation[0] == 200:
-            print(f'Changing to {validation[2]}')
+        elif endpoint.startswith('/brightness/'):
+            brightness = endpoint.removeprefix('/brightness/')
+            response = controller.changeBrightness(brightness)
 
-        cl.send(f'HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
-        cl.send(validation[1])
+        if response == 'OK':
+            cl.send(f'HTTP/1.1 200 OK\r\nContent-type: text/html\r\n\r\n')
+        else:
+            cl.send(f'HTTP/1.1 400 Bad Request\r\nContent-type: text/html\r\n\r\n')
+
+        cl.send(response)
         cl.close()
     except Exception as e:
         pass
