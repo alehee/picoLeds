@@ -32,5 +32,3 @@ class Networking:
         self.socket.bind(addr)
         self.socket.listen(1)
         print(f'Listening to {addr}')
-
-    

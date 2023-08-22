@@ -1,3 +1,4 @@
+from neopixel import NeoPixel
 from led import Led
 
 class Controller:
@@ -23,3 +24,7 @@ class Controller:
         # TODO
         print(f'Changed brightness to {brightness}')
         return 'OK'
+    
+    def updateLeds(self):
+        # TODO
+        pass
