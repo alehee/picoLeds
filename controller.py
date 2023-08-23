@@ -1,30 +1,57 @@
-from neopixel import NeoPixel
-from led import Led
+from neopixel import Neopixel
 
 class Controller:
-    def __init__(self, count, port):
-        self.leds = []
+    def __init__(self, count, pin):
+        self.strip = None
         self.count = count
-        self.port = port
+        self.pin = pin
         self.isOn = False
+        self.color = (80, 0, 0)
         self.brightness = 50
         self.initialize()
 
     def initialize(self):
-        for i in range(0, self.count):
-            self.leds.append(Led('#C00000'))
+        self.strip = Neopixel(self.count, 0, self.pin)
 
     def changeColor(self, color):
-        # TODO
-        print(f'Changed color to {color}')
-        return 'OK'
+        try:
+            rgb = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
+            if rgb[0] < 0 or rgb[0]>255 or rgb[1] < 0 or rgb[1]>255 or rgb[2] < 0 or rgb[2]>255:
+                raise Exception("Color not valid")
+            self.color = rgb
+            self.updateLeds()
+            print(f'Changed color to {rgb}')
+            return 'OK'
+        except Exception as e:
+            print(e)
+            return 'Color changing failed'
 
     def changeBrightness(self, brightness):
-        self.brightness = brightness
-        # TODO
-        print(f'Changed brightness to {brightness}')
-        return 'OK'
-    
+        try:
+            if brightness < 0 or brightness > 255:
+                raise Exception("Brightness range not valid")
+            self.brightness = brightness
+            self.updateLeds()
+            print(f'Changed brightness to {brightness}')
+            return 'OK'
+        except Exception as e:
+            print(e)
+            return e
+        
+    def toggleLeds(self, isOn):
+        try:
+            self.isOn = isOn
+            self.updateLeds()
+            print(f'Changed powering to {isOn}')
+            return 'OK'
+        except Exception as e:
+            print(e)
+            return e
+        
     def updateLeds(self):
-        # TODO
-        pass
+        if self.isOn:
+            self.strip.fill(self.color)
+        else:
+            self.strip.fill((0,0,0))
+        self.strip.brightness(self.brightness)
+        self.strip.show()

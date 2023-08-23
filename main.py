@@ -7,7 +7,7 @@ config = json.load(open('config.json'))
 
 print('Initializing leds')
 ledsConfig = config['leds']
-controller = Controller(ledsConfig['count'], ledsConfig['port'])
+controller = Controller(ledsConfig['count'], ledsConfig['pin'])
 
 print('Initializing network')
 networkConfig = config['network']
@@ -19,7 +19,6 @@ network.socket_open()
 network.updateIpAddress(networkConfig['endpointUrl'], config['id'])
 
 print('Running loop')
-
 while True:
     try:
         cl, addr = network.socket.accept()
