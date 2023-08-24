@@ -5,13 +5,14 @@ class Controller:
         self.strip = None
         self.count = count
         self.pin = pin
-        self.isOn = False
-        self.color = (80, 0, 0)
+        self.isOn = True
+        self.color = (0, 80, 0)
         self.brightness = 50
         self.initialize()
 
     def initialize(self):
-        self.strip = Neopixel(self.count, 0, self.pin)
+        self.strip = Neopixel(self.count, 0, self.pin, "GRB")
+        self.updateLeds()
 
     def changeColor(self, color):
         try:
@@ -28,6 +29,7 @@ class Controller:
 
     def changeBrightness(self, brightness):
         try:
+            brightness = int(brightness)
             if brightness < 0 or brightness > 255:
                 raise Exception("Brightness range not valid")
             self.brightness = brightness
