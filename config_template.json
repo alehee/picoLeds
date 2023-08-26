@@ -8,6 +8,7 @@
   },
   "leds": {
     "count": 20,
-    "pin": 14
+    "pin": 14,
+    "type": "GRB"
   }
 }

@@ -7,7 +7,7 @@ config = json.load(open('config.json'))
 
 print('Initializing leds')
 ledsConfig = config['leds']
-controller = Controller(ledsConfig['count'], ledsConfig['pin'])
+controller = Controller(ledsConfig['count'], ledsConfig['pin'], ledsConfig['type'])
 
 print('Initializing network')
 networkConfig = config['network']
