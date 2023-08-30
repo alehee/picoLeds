@@ -1,5 +1,9 @@
 # picoLeds
 
+<p align="center">
+  <img src="https://github.com/alehee/picoLeds/blob/main/bar.jpg">
+</p>
+
 ## Description
 
 System of WS2812B leds controled by Raspberry Pico W using API server hosted on the Pico device.
