@@ -1,0 +1,14 @@
+{
+  "id": "LEDZ",
+  "network": {
+    "networkSsid": "wifiName",
+    "networkPassword": "wifiPassword",
+    "endpointUrl": "http://someaddress.com/endpoint",
+    "hostedPort": 80
+  },
+  "leds": {
+    "count": 20,
+    "pin": 14,
+    "type": "GRB"
+  }
+}
