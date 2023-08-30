@@ -16,6 +16,8 @@ network.connect()
 
 print('Opening socket')
 network.socket_open()
+
+# Comment if no IP sync needed
 network.updateIpAddress(networkConfig['endpointUrl'], config['id'])
 
 print('Running loop')
